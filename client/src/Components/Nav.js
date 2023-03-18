@@ -9,7 +9,7 @@ import logout from "../assests/Logout.png";
 import { Link } from "react-router-dom";
 const Nav = () => {
   return (
-    <nav className="flex sm:flex-col sm:h-screen justify-between sm:items-start items-center sm:w-[100px] w-full p-4 sm:pb-20">
+    <nav className="flex sm:flex-col sm:h-screen justify-between items-center sm:w-[100px] w-full p-4 sm:pb-20">
       <img className="w-8 h-6 object-contain" src={logo} />
 
       <div className="AppNav flex sm:flex-col justify-between items-center bg-[#1A1E1F] p-2 sm:gap-4 gap-2 rounded-[32px]">

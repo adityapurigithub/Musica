@@ -1,6 +1,7 @@
 import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
+import CheckAuth from "./Components/Utils/CheckAuth";
 import { Home, Playlist, Signin, Signup } from "./Pages";
 
 const router = createBrowserRouter([
@@ -9,7 +10,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: (
+          <CheckAuth>
+            <Home />
+          </CheckAuth>
+        ),
       },
       {
         path: "/playlist",

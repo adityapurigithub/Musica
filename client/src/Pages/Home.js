@@ -18,7 +18,7 @@ const Home = () => {
           <ChartCard />
         </div>
       </div>
-      <div className="flex gap-2 overflow-x-auto">
+      <div className="flex gap-2 overflow-x-auto my-4">
         <AlbumCard />
         <AlbumCard />
         <AlbumCard />
