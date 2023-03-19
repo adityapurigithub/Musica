@@ -3,4 +3,5 @@ import ChartCard from "./ChartCard";
 import AlbumCard from "./AlbumCard";
 import FormField from "./FormField";
 import Form from "./Form";
-export { Nav, ChartCard, AlbumCard, FormField, Form };
+import Player from "./Player";
+export { Nav, ChartCard, AlbumCard, FormField, Form, Player };

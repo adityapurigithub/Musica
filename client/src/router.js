@@ -2,7 +2,8 @@ import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import CheckAuth from "./Components/Utils/CheckAuth";
-import { Home, Playlist, Signin, Signup } from "./Pages";
+import Guest from "./Components/Utils/Guest";
+import { Home, Playlist, Signin, Signup, UserProfile } from "./Pages";
 
 const router = createBrowserRouter([
   {
@@ -18,15 +19,35 @@ const router = createBrowserRouter([
       },
       {
         path: "/playlist",
-        element: <Playlist />,
+        element: (
+          <CheckAuth>
+            <Playlist />
+          </CheckAuth>
+        ),
+      },
+      {
+        path: "/user-profile",
+        element: (
+          <CheckAuth>
+            <UserProfile />
+          </CheckAuth>
+        ),
       },
       {
         path: "/sign-in",
-        element: <Signin />,
+        element: (
+          <Guest>
+            <Signin />
+          </Guest>
+        ),
       },
       {
         path: "/sign-up",
-        element: <Signup />,
+        element: (
+          <Guest>
+            <Signup />
+          </Guest>
+        ),
       },
       {
         path: "*",

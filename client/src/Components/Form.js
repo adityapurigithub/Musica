@@ -1,10 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FormField } from "../Components";
 import Cookies from "js-cookie";
 const Form = ({ heading, btn, siorsuLink, aboutAccount, to, bg }) => {
   const path = window.location.pathname;
-  console.log(path);
+  // console.log(path);
+
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -72,6 +74,7 @@ const Form = ({ heading, btn, siorsuLink, aboutAccount, to, bg }) => {
       const token = data.token;
 
       Cookies.set("token", token);
+      navigate("/");
     }
     alert(data.msg);
     console.log(data);
