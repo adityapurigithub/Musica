@@ -6,7 +6,9 @@ import { useLocalContext } from "../../Context/LocalContextProvider";
 const CheckAuth = ({ children }) => {
   const { user } = useLocalContext();
 
-  return user ? children : <Navigate to="/sign-in" />;
+  // return user ? children : <Navigate to="/sign-in" />;
+
+  return children;
 };
 
 export default CheckAuth;

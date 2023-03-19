@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState } from "react";
 
 const LocalContext = createContext();
 
-// const baseMusicUrl=''
+const baseMusicUrl = "https://shazam.p.rapidapi.com";
 
 export const LocalContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -11,7 +11,40 @@ export const LocalContextProvider = ({ children }) => {
 
   const [searchTerm, setSearchTerm] = useState("");
 
-  //   const getMusic=async()=>{ }
+  const [tracks, setTracks] = useState([]);
+  const [banner, setBanner] = useState({});
+
+  const getTracks = async (type) => {
+    const response = await fetch(`${baseMusicUrl}/${type}`, {
+      method: "GET",
+      headers: {
+        "X-RapidAPI-Key": "a821798f0fmsh15fd6f185e32b6dp1247d2jsn30d9c90bb6c8",
+        "X-RapidAPI-Host": "shazam.p.rapidapi.com",
+      },
+    });
+
+    const data = await response.json();
+    setTracks(data.tracks);
+
+    let i = Math.ceil(Math.random() * data.tracks.length - 1);
+    console.log(i);
+    let banner = data.tracks[i];
+
+    setBanner(banner);
+    console.log(banner);
+  };
+
+  const getNewReleased = async (type) => {
+    const response = await fetch(`${baseMusicUrl}/${type}`, {
+      method: "GET",
+      headers: {
+        "X-RapidAPI-Key": "a821798f0fmsh15fd6f185e32b6dp1247d2jsn30d9c90bb6c8",
+        "X-RapidAPI-Host": "shazam.p.rapidapi.com",
+      },
+    });
+
+    console.log(await response.json());
+  };
 
   return (
     <LocalContext.Provider
@@ -21,6 +54,10 @@ export const LocalContextProvider = ({ children }) => {
         isLoading,
         searchTerm,
         setSearchTerm,
+        getTracks,
+        getNewReleased,
+        tracks,
+        banner,
       }}
     >
       {children}
