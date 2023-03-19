@@ -1,11 +1,13 @@
 import express, { json } from "express";
 import * as dotenv from "dotenv";
 import cors from "cors";
-import authAPI from "./routes/authAPI.js";
-import User from "./models/user.js";
+
 import db from "./config/db.js";
 import passport from "passport";
 import passportConfig from "./config/passport.js";
+
+import authAPI from "./routes/authAPI.js";
+import userAPI from "./routes/userAPI.js";
 
 dotenv.config();
 const app = express();
@@ -24,6 +26,8 @@ app.use(passport.initialize());
 passportConfig(passport);
 
 app.use("/auth", authAPI);
+
+app.use("/user", userAPI);
 
 app.listen(process.env.PORT, (err) => {
   if (err) {

@@ -11,7 +11,7 @@ export const signUp = async (req, res) => {
   if (userExist) {
     return res.status(406).json({
       msg: "user already exist!! Please Sign In",
-    }); //status(406)-not acceptable
+    }); //status(406)-not acceptable...
     // ...................................................................
   }
 
