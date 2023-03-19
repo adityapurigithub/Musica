@@ -5,26 +5,35 @@ dotenv.config();
 
 let options = {};
 
-//token from req-headers ....from client
 options.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
-//secret used to extract user from token
 options.secretOrKey = process.env.JWT_SECRET;
-
 export default (passport) => {
   passport.use(
     new JwtStrategy(options, function (jwt_payload, done) {
-      //when creating jwt token i passed id so finding user using the id in payload
-      User.findById(jwt_payload.id, function (err, user) {
-        if (err) {
-          return done(err, false); //done(_err_,_user_)
-        }
-        if (user) {
-          return done(null, user);
-        } else {
-          return done(null, false);
-          // or you could create a new account
-        }
-      });
+      User.findById({ id: jwt_payload.id })
+        .then((user) => {
+          if (user) {
+            return done(null, user);
+          } else {
+            return done(null, false);
+          }
+        })
+        .catch((err) => {
+          return done(err, false);
+        });
+
+      //#$* new verion of mongo..model.findById() doesnot accept callback
+      // function (err, user) {
+      //   if (err) {
+      //     return done(err, false);
+      //   }
+      //   if (user) {
+      //     return done(null, user);
+      //   } else {
+      //     return done(null, false);
+      //     // or you could create a new account
+      //   }
+      // });
     })
   );
 };
