@@ -60,7 +60,7 @@ export const signIn = async (req, res) => {
 
     return res.status(200).json({
       msg: "Logged In!!!",
-      user: user.name,
+      user,
       token,
     });
   } else {

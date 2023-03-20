@@ -10,7 +10,7 @@ options.secretOrKey = process.env.JWT_SECRET;
 export default (passport) => {
   passport.use(
     new JwtStrategy(options, function (jwt_payload, done) {
-      User.findById({ id: jwt_payload.id })
+      User.findById(jwt_payload.id)
         .then((user) => {
           if (user) {
             return done(null, user);
