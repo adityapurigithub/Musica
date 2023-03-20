@@ -12,6 +12,11 @@ export const LocalContextProvider = ({ children }) => {
   const [searchTerm, setSearchTerm] = useState("");
 
   const [tracks, setTracks] = useState([]);
+
+  const [latest, setLatest] = useState([]);
+
+  const [newReleased, setNewReleased] = useState([]);
+
   const [banner, setBanner] = useState({});
 
   const getTracks = async (type) => {
@@ -43,7 +48,23 @@ export const LocalContextProvider = ({ children }) => {
       },
     });
 
-    console.log(await response.json());
+    // console.log();
+    const data = await response.json();
+    setNewReleased(data.tracks.hits);
+  };
+
+  const getLatest = async (type) => {
+    const response = await fetch(`${baseMusicUrl}/${type}`, {
+      method: "GET",
+      headers: {
+        "X-RapidAPI-Key": "a821798f0fmsh15fd6f185e32b6dp1247d2jsn30d9c90bb6c8",
+        "X-RapidAPI-Host": "shazam.p.rapidapi.com",
+      },
+    });
+
+    // console.log();
+    const data = await response.json();
+    setLatest(data.tracks.hits);
   };
 
   return (
@@ -56,8 +77,11 @@ export const LocalContextProvider = ({ children }) => {
         setSearchTerm,
         getTracks,
         getNewReleased,
+        getLatest,
         tracks,
         banner,
+        latest,
+        newReleased,
       }}
     >
       {children}

@@ -3,10 +3,10 @@ import { AlbumCard, Banner, ChartCard } from "../Components";
 import { useLocalContext } from "../Context/LocalContextProvider";
 
 const Home = () => {
-  const { tracks, banner } = useLocalContext();
+  const { tracks, banner, latest, newReleased } = useLocalContext();
 
   return (
-    <div className=" search sm:w-[calc(100vw-120px)] p-4 flex flex-col gap-3">
+    <div className=" sm:w-[calc(100vw-120px)] overflow-auto p-2 flex flex-col gap-3">
       <input
         className="sm:w-full bg-gray-700 rounded-xl py-1 px-4"
         type="text"
@@ -14,7 +14,7 @@ const Home = () => {
       />
       <div className="flex sm:flex-row sm:items-center flex-col gap-4">
         <Banner banner={banner} />
-        <div className="flex flex-col max-h-[330px] overflow-auto ">
+        <div className="flex flex-col max-h-[300px] overflow-auto ">
           <h2 className="text-lg font-semibold">Top Charts</h2>
           {tracks.length === 0 && "Loading"}
           {tracks.map((track, id) => {
@@ -25,16 +25,14 @@ const Home = () => {
           })}
         </div>
       </div>
-      <div className="flex gap-2 overflow-x-auto my-4">
-        <AlbumCard />
-        <AlbumCard />
-        <AlbumCard />
-        <AlbumCard />
-        <AlbumCard />
-        <AlbumCard />
-        <AlbumCard />
-        <AlbumCard />
-        <AlbumCard />
+      <div className="flex gap-4 items-center overflow-x-auto mt-2 text-sm">
+        {newReleased.map((music) => (
+          <AlbumCard music={music} />
+        ))}
+
+        {latest.map((music) => (
+          <AlbumCard music={music} />
+        ))}
       </div>
     </div>
   );

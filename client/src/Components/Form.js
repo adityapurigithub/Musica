@@ -2,11 +2,14 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FormField } from "../Components";
 import Cookies from "js-cookie";
+import { useLocalContext } from "../Context/LocalContextProvider";
 const Form = ({ heading, btn, siorsuLink, aboutAccount, to, bg }) => {
   const path = window.location.pathname;
   // console.log(path);
 
   const navigate = useNavigate();
+
+  const { setUser } = useLocalContext();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -72,8 +75,10 @@ const Form = ({ heading, btn, siorsuLink, aboutAccount, to, bg }) => {
     const data = await response.json();
     if (response.ok) {
       const token = data.token;
-
+      const user = data.user;
       Cookies.set("token", token);
+      //setuser after getting res-- ok
+      setUser(user);
       navigate("/");
     }
     alert(data.msg);

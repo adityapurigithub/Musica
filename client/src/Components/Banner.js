@@ -3,7 +3,7 @@ import React from "react";
 const Banner = ({ banner }) => {
   return (
     <div
-      className="sm:w-2/3 sm:h-[350px] h-[260px] w-full ease shadow-md shadow-gray-400 rounded-xl opacity:10 relative"
+      className="sm:w-2/3 sm:h-[300px] h-[260px] w-full ease shadow-md shadow-gray-400 rounded-xl opacity:10 relative"
       style={{
         backgroundImage: `url(${banner?.images?.background})`,
         backgroundSize: "cover",

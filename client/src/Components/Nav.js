@@ -8,12 +8,15 @@ import videos from "../assests/videos.png";
 import logout from "../assests/Logout.png";
 import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
+import { useLocalContext } from "../Context/LocalContextProvider";
 const Nav = () => {
   const navigate = useNavigate();
 
+  const { setUser } = useLocalContext();
   const handleLogout = () => {
     Cookies.remove("token");
     if (window.confirm("You will be logged out!!!")) {
+      setUser(null);
       return navigate("/sign-in");
     }
   };
