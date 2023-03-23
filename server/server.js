@@ -8,6 +8,7 @@ import passportConfig from "./config/passport.js";
 
 import authAPI from "./routes/authAPI.js";
 import userAPI from "./routes/userAPI.js";
+import musicAPI from "./routes/musicAPI.js";
 
 dotenv.config();
 const app = express();
@@ -28,6 +29,8 @@ passportConfig(passport);
 app.use("/auth", authAPI);
 
 app.use("/user", userAPI);
+
+app.use("/music", musicAPI);
 
 app.listen(process.env.PORT, (err) => {
   if (err) {
