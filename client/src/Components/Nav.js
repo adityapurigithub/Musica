@@ -26,30 +26,48 @@ const Nav = () => {
 
       <div className="AppNav flex sm:flex-col justify-between items-center bg-slate-800 sm:p-2 p-1 sm:pb-4 sm:gap-4 gap-2 rounded-[32px]">
         <Link to="/">
-          <img className="w-10 h-10 object-contain cursor-pointer" src={home} />
+          <abbr title="Home">
+            <img
+              className="w-10 h-10 object-contain cursor-pointer"
+              src={home}
+            />
+          </abbr>
         </Link>
 
         <Link to="/playlist">
-          <img
-            className="w-8 h-6 object-contain cursor-pointer"
-            src={playlist}
-          />
+          <abbr title="Your Playlist">
+            <img
+              className="w-8 h-6 object-contain cursor-pointer"
+              src={playlist}
+            />
+          </abbr>
         </Link>
-        <img className="w-8 h-6 object-contain cursor-pointer" src={radio} />
+        <Link to="/add-new-track">
+          <abbr title="Add New Tracks">
+            <img
+              className="w-8 h-6 object-contain cursor-pointer"
+              src={radio}
+            />
+          </abbr>
+        </Link>
         <img className="w-8 h-6 object-contain cursor-pointer" src={videos} />
       </div>
       <div className="AppNav flex sm:flex-col justify-between items-center  bg-slate-800 sm:p-2 p-1 sm:gap-4 gap-2 rounded-[32px]">
         <Link to="/user-profile">
+          <abbr title="Profile">
+            <img
+              className="w-8 h-6 object-contain cursor-pointer"
+              src={profile}
+            />
+          </abbr>
+        </Link>
+        <abbr title="logout">
           <img
             className="w-8 h-6 object-contain cursor-pointer"
-            src={profile}
+            src={logout}
+            onClick={handleLogout}
           />
-        </Link>
-        <img
-          className="w-8 h-6 object-contain cursor-pointer"
-          src={logout}
-          onClick={handleLogout}
-        />
+        </abbr>
       </div>
     </nav>
   );

@@ -13,6 +13,7 @@ function App() {
     getNewReleased,
     getTracks,
     getLatest,
+    getPlaylist,
   } = useLocalContext();
 
   const token = Cookies.get("token");
@@ -37,13 +38,15 @@ function App() {
     getTracks("charts/track");
     getNewReleased("search?term=new%20released%20songs");
     getLatest("search?term=latest%20songs");
+
+    getPlaylist();
   }, []);
 
   return (
     <div className="App flex sm:flex-row flex-col sm:h-[100vh] overflow-hidden gap-2 bg-slate-900 text-gray-100">
       <Nav />
       <Outlet />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

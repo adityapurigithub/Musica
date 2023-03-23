@@ -3,7 +3,7 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import CheckAuth from "./Components/Utils/CheckAuth";
 import Guest from "./Components/Utils/Guest";
-import { Home, Playlist, Signin, Signup, UserProfile } from "./Pages";
+import { Home, Playlist, Signin, Signup, UserProfile, AddTrack } from "./Pages";
 
 const router = createBrowserRouter([
   {
@@ -25,11 +25,20 @@ const router = createBrowserRouter([
           </CheckAuth>
         ),
       },
+
       {
-        path: "/user-profile",
+        path: "/your-playlist",
         element: (
           <CheckAuth>
-            <UserProfile />
+            <Playlist />
+          </CheckAuth>
+        ),
+      },
+      {
+        path: "/add-new-track",
+        element: (
+          <CheckAuth>
+            <AddTrack />
           </CheckAuth>
         ),
       },
@@ -54,8 +63,13 @@ const router = createBrowserRouter([
         element: (
           <div className="flex flex-col gap-3 h-screen w-full justify-center items-center">
             <h1 className="text-2xl font-bold">Hey! how you landed here!!!</h1>
-            <h2 className="text-lg font-bold">Hey! how you landed here!!!</h2>
-            <img src="" alt="404" />
+            <h2 className="text-lg font-bold">
+              Sorry, This Page Does not Exist!!!
+            </h2>
+            <img
+              src="https://assets.materialup.com/uploads/c0d66e33-944f-40a1-b7a7-a45387c2ba47/preview.jpg"
+              alt="404"
+            />
           </div>
         ),
       },

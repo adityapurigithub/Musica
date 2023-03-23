@@ -6,7 +6,7 @@ const Home = () => {
   const { tracks, banner, latest, newReleased } = useLocalContext();
 
   return (
-    <div className=" sm:w-[calc(100vw-120px)] overflow-auto p-2 flex flex-col gap-3">
+    <div className="w-full overflow-auto p-2 flex flex-col gap-3 sm:mt-4">
       <input
         className="sm:w-full bg-gray-700 rounded-xl py-1 px-4"
         type="text"

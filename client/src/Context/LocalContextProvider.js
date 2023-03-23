@@ -19,6 +19,8 @@ export const LocalContextProvider = ({ children }) => {
 
   const [banner, setBanner] = useState({});
 
+  const [playlist, setPlayList] = useState(null);
+
   const getTracks = async (type) => {
     const response = await fetch(`${baseMusicUrl}/${type}`, {
       method: "GET",
@@ -67,6 +69,24 @@ export const LocalContextProvider = ({ children }) => {
     setLatest(data.tracks.hits);
   };
 
+  const getPlaylist = async () => {
+    console.log("getlist");
+    const response = await fetch(
+      `${process.env.REACT_APP_API_URL}/music/getMusic`
+    );
+
+    const { music } = await response.json();
+
+    if (response.ok) {
+      setPlayList(music);
+    }
+  };
+
+  const handleAddTrack = (e) => {
+    e.preventDefault();
+    return alert("Sorry this action is not available right now...#(");
+  };
+
   return (
     <LocalContext.Provider
       value={{
@@ -82,6 +102,9 @@ export const LocalContextProvider = ({ children }) => {
         banner,
         latest,
         newReleased,
+        getPlaylist,
+        playlist,
+        handleAddTrack,
       }}
     >
       {children}
