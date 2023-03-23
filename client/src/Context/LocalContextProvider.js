@@ -1,3 +1,4 @@
+import Cookies from "js-cookie";
 import React, { createContext, useContext, useState } from "react";
 
 const LocalContext = createContext();
@@ -20,6 +21,8 @@ export const LocalContextProvider = ({ children }) => {
   const [banner, setBanner] = useState({});
 
   const [playlist, setPlayList] = useState(null);
+
+  const token = Cookies.get("token");
 
   const getTracks = async (type) => {
     const response = await fetch(`${baseMusicUrl}/${type}`, {
@@ -72,13 +75,20 @@ export const LocalContextProvider = ({ children }) => {
   const getPlaylist = async () => {
     console.log("getlist");
     const response = await fetch(
-      `${process.env.REACT_APP_API_URL}/music/getMusic`
+      `${process.env.REACT_APP_API_URL}/music/getMusic`,
+      {
+        method: "get",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
     );
 
     const { music } = await response.json();
 
     if (response.ok) {
       setPlayList(music);
+      console.log(playlist);
     }
   };
 

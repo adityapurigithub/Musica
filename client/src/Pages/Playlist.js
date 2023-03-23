@@ -17,12 +17,12 @@ const Playlist = () => {
         }}
       ></div>
       <div className="w-full flex flex-col items-center absolute my-10 h-[88vh] overflow-auto">
-        {playlist && (
+        {playlist.length > 0 && (
           <h2 className="text-3xl italic font-semibold mb-4">
             Your PlayList...
           </h2>
         )}
-        {!playlist ? (
+        {!playlist || playlist.length == 0 ? (
           <h2 className="text-2xl font-semibold italic">
             Your PlayList is Empty
           </h2>

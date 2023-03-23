@@ -38,9 +38,8 @@ function App() {
     getTracks("charts/track");
     getNewReleased("search?term=new%20released%20songs");
     getLatest("search?term=latest%20songs");
-
     getPlaylist();
-  }, []);
+  }, [token]);
 
   return (
     <div className="App flex sm:flex-row flex-col sm:h-[100vh] overflow-hidden gap-2 bg-slate-900 text-gray-100">

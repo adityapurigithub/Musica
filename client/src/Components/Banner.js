@@ -14,7 +14,9 @@ const Banner = ({ banner }) => {
       {banner !== {} && (
         <div className="flex flex-col justify-between rounded-2xl p-4 px-6 absolute top-5 left-5 bg-[rgba(0,0,0,0.2)]">
           <div className="flex flex-col">
-            <span className="text-5xl font-bold">{banner.title}</span>
+            <span className="sm:text-5xl text-2xl font-bold">
+              {banner.title}
+            </span>
             {banner?.artists?.map((artist) => (
               <span className="text-sm text-right">{artist.alias}</span>
             ))}
