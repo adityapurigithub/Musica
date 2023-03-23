@@ -62,7 +62,7 @@ const router = createBrowserRouter([
         path: "*",
         element: (
           <div className="flex flex-col gap-3 h-screen w-full justify-center items-center">
-            <h1 className="text-2xl font-bold">Hey! how you landed here!!!</h1>
+            <h1 className="text-2xl font-bold ">Hey! how you landed here!!!</h1>
             <h2 className="text-lg font-bold">
               Sorry, This Page Does not Exist!!!
             </h2>
