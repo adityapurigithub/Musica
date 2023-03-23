@@ -10,6 +10,10 @@ const musicSchema = new mongoose.Schema(
       type: Array,
       required: true,
     },
+    user_id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
   },
   { timestamps: true }
 );

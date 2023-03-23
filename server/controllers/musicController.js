@@ -4,7 +4,7 @@ export const addMusicTracks = async (req, res) => {
   // console.log(req.body.data);
   let playlist = req.body.data;
 
-  const music = new Music({ playlist });
+  const music = new Music({ playlist, user_id: req.user._id });
 
   await music.save();
 
@@ -15,7 +15,9 @@ export const addMusicTracks = async (req, res) => {
 };
 
 export const getMusic = async (req, res) => {
-  let music = await Music.find({}).sort({ createdAt: -1 });
+  let music = await Music.find({ user_id: req.user._id }).sort({
+    createdAt: -1,
+  });
   console.log(music);
 
   res.status(200).json({
